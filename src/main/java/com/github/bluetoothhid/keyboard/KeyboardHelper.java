@@ -24,8 +24,6 @@ import com.github.bluetoothhid.keyboard.Modifier;
 import com.github.bluetoothhid.report.KeyboardReport;
 import com.google.common.collect.ImmutableMap;
 
-import org.apache.commons.codec.binary.Hex;
-
 /**
  * Helper class that allows sending less key press states, keeps some handy constants and translates
  * characters to scan codes.
