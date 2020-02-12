@@ -152,8 +152,6 @@ public class KeyboardHelper {
         if (key == null) {
         	builder.setLeftShift();
             key = shiftKeyMap.get(character);
-
-			System.out.println(character);
             if (key == null) {
                 return;
             }
@@ -171,5 +169,13 @@ public class KeyboardHelper {
 				sendChar(character);
 			}
 		}
+	}
+
+	public static @Key byte getKey(char character) {
+		@Key Byte key = keyMap.get(character);
+		if (key == null) {
+			key = shiftKeyMap.get(character);
+		}
+		return key;
 	}
 }
