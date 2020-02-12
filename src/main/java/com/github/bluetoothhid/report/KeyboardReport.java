@@ -108,6 +108,77 @@ public class KeyboardReport implements Report{
 		report.clear();
 	}
 
+	public @Modifier byte getModifier() {
+    	return this.report.get(0);
+	}
+
+	public void setModifier(@Modifier byte modifier) {
+    	this.report.put(0, modifier);
+	}
+
+	public void addModifier(@Modifier byte modifier) {
+    	this.report.array()[0] |= modifier;
+	}
+
+	public void removeModifier(@Modifier byte modifier) {
+    	this.report.array()[0] &= ~modifier;
+	}
+
+	/**
+	 * index <= 5
+	 * @param index
+	 * @return
+	 */
+	public @Key byte getKey(int index) {
+    	return this.report.get(index);
+	}
+
+	/**
+	 * index <= 5
+	 * @param index
+	 * @return
+	 */
+	public void setKey(int index, @Key byte key) {
+		this.report.put(index + 2, key);
+	}
+
+	public boolean addKey(@Key byte key) {
+		Character index = null;
+		for (char i = 2; i < 7; i++) {
+			if (getKey(i) == Key.NONE && index == null) {
+				index = i;
+			} else if (getKey(i) == key) {
+				return true;
+			}
+		}
+		if (index != null) {
+			setKey(index, key);
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public boolean hasKey(@Key byte key) {
+		for (char i = 2; i < 7; i++) {
+			if (getKey(i) == key) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean removeKey(@Key byte key) {
+		boolean removed = false;
+		for (char i = 2; i < 7; i++) {
+			if (getKey(i) == key) {
+				setKey(i, Key.NONE);
+				removed = true;
+			}
+		}
+		return removed;
+	}
+
 
 
 	@Override
