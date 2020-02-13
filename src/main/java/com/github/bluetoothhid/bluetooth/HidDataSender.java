@@ -32,7 +32,7 @@ public class HidDataSender implements BluetoothProfile.ServiceListener {
 	}
 
 	public void sendReport(Report report) {
-		getBluetoothHidDevice().sendReport(device, registeredHidDescriptions.indexOf(report.getHidDescription()), report.build());
+		getBluetoothHidDevice().sendReport(device, registeredHidDescriptions.indexOf(report.getHidDescription()) + 1, report.build());
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public class HidDataSender implements BluetoothProfile.ServiceListener {
 		if (profile == BluetoothProfile.HID_DEVICE) {
 			this.bluetoothHidDevice = (BluetoothHidDevice)proxy;
 			ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-			char index = 0;
+			char index = 1;
 			for (Class hidDescription : this.registeredHidDescriptions) {
 				try {
 					byteArrayOutputStream.write(((HidDescription)hidDescription.newInstance()).getDescription((byte)index));
