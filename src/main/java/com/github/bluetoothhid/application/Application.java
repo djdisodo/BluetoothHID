@@ -103,7 +103,7 @@ public class Application {
 
 	public static Application Joystick(String name, String description, String provider, BluetoothHidDevice.Callback callback) {
 		return new Application(
-				new BluetoothHidDeviceAppSdpSettings(name, description, provider, BluetoothHidDevice.SUBCLASS1_KEYBOARD, new byte[] {
+				new BluetoothHidDeviceAppSdpSettings(name, description, provider, BluetoothHidDevice.SUBCLASS2_JOYSTICK, new byte[] {
 						0x05, 0x01,        // USAGE_PAGE (Generic Desktop)
 						0x09, 0x05,        // USAGE (Game Pad)
 						(byte) 0xa1, 0x01, // COLLECTION (Application)

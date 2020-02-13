@@ -39,5 +39,14 @@ public class HidDataSender implements BluetoothProfile.ServiceListener {
 
 	public void connect(BluetoothDevice device) {
 		this.device = device;
+		boolean needConnect = true;
+		for (BluetoothDevice d : bluetoothHidDevice.getConnectedDevices()) {
+			if (d == device) {
+				needConnect = false;
+			}
+		}
+		if (needConnect) {
+			getBluetoothHidDevice().connect(device);
+		}
 	}
 }
