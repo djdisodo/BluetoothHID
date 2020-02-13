@@ -86,7 +86,7 @@ public class GamePad implements HidDescription {
 		}
 		@Override
 		public byte[] build() {
-			return new byte[0];
+			return report.array();
 		}
 
 		@Override
