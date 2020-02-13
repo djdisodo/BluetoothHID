@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class HidDataSender implements BluetoothProfile.ServiceListener {
 	private BluetoothHidDevice bluetoothHidDevice;
 	private BluetoothDevice device;
-	private ArrayList<Class> registeredHidDescriptions;
+	private ArrayList<Class> registeredHidDescriptions = new ArrayList<>();
 	private String name;
 	private String descriptor;
 	private String providor;
