@@ -19,9 +19,9 @@ package com.github.bluetoothhid.keyboard;
 import androidx.annotation.NonNull;
 
 import com.github.bluetoothhid.bluetooth.HidDataSender;
+import com.github.bluetoothhid.input.Keyboard;
 import com.github.bluetoothhid.keyboard.Key;
 import com.github.bluetoothhid.keyboard.Modifier;
-import com.github.bluetoothhid.report.KeyboardReport;
 import com.google.common.collect.ImmutableMap;
 
 /**
@@ -156,15 +156,15 @@ public class KeyboardHelper {
                 return;
             }
         }
-        dataSender.sendReport(new KeyboardReport(builder.build(), key));
-        dataSender.sendReport(KeyboardReport.NONE);
+        dataSender.sendReport(new Keyboard.Report(builder.build(), key));
+        dataSender.sendReport(new Keyboard.Report());
     }
     public void sendString(String text) {
 		for (char character :
 			 text.replace("\r\n", "\n").toCharArray()) {
 			if (character == '\n') {
-				dataSender.sendReport(new KeyboardReport(Modifier.NONE, Key.ENTER));
-				dataSender.sendReport(KeyboardReport.NONE);
+				dataSender.sendReport(new Keyboard.Report(Modifier.NONE, Key.ENTER));
+				dataSender.sendReport(new Keyboard.Report());
 			} else {
 				sendChar(character);
 			}
