@@ -13,9 +13,6 @@ public class HidDataSender implements BluetoothProfile.ServiceListener {
 	private BluetoothHidDevice bluetoothHidDevice;
 	private BluetoothDevice device;
 
-	public HidDataSender(@NonNull BluetoothHidDevice bluetoothHidDevice) {
-	}
-
 	public void sendReport(Report report) {
 		getBluetoothHidDevice().sendReport(device, report.getID(), report.build());
 	}
