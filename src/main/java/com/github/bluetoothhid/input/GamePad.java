@@ -20,7 +20,7 @@ public class GamePad implements HidDescription {
 				(byte)0x25, (byte)0x01,                    //     LOGICAL_MAXIMUM (1)
 				(byte)0x75, (byte)0x01,                    //     REPORT_SIZE (1)
 				(byte)0x95, (byte)0x04,                    //     REPORT_COUNT (4)
-				(byte)0x81, (byte)0x03,                    //     INPUT (Data,Var,Abs)
+				(byte)0x81, (byte)0x02,                    //     INPUT (Data,Var,Abs)
 				(byte)0x05, (byte)0x01,                    //     USAGE_PAGE (Generic Desktop)
 				(byte)0x09, (byte)0x30,                    //     USAGE (X)
 				(byte)0x09, (byte)0x31,                    //     USAGE (Y)
