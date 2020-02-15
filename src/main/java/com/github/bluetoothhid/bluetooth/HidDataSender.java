@@ -32,6 +32,9 @@ public class HidDataSender implements BluetoothProfile.ServiceListener {
 	}
 
 	public void sendReport(Report report) {
+		if (bluetoothHidDevice != null) {
+			return;
+		}
 		getBluetoothHidDevice().sendReport(device, registeredHidDescriptions.indexOf(report.getHidDescription()) + 1, report.build());
 	}
 
@@ -73,6 +76,9 @@ public class HidDataSender implements BluetoothProfile.ServiceListener {
 	}
 
 	public void connect(BluetoothDevice device) {
+		if (bluetoothHidDevice != null) {
+			return;
+		}
 		this.device = device;
 		boolean needConnect = true;
 		for (BluetoothDevice d : bluetoothHidDevice.getConnectedDevices()) {
